@@ -16,11 +16,12 @@ Required: LLamaLibrary BotBase
     <!ENTITY gsm "1">
     <!ENTITY ltw "1">
     <!ENTITY wvr "1">
+    <!ENTITY crpTool "41191">
 ]>
 <Profile>
     <Name>Splendorous Start</Name>
     <Order>
-        <If Condition="&crp; == 1 and not HasItem(41191) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
+        <If Condition="&crp; == 1 and not HasItem(&crpTool;) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
             <LLoadProfile Path="Profiles/Splendorous CRP Tool.xml" />
         </If>
         <!--         <If Condition=" &bsm;== 1">

@@ -6,64 +6,86 @@ Required: LLamaLibrary BotBase
 		  Exbuddy Plugin
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
+<!DOCTYPE Profile [
+    <!ENTITY job "Carpenter">
+    <!ENTITY splendorousTool "38715">
+    <!ENTITY augmentedTool "38726">
+    <!ENTITY augmentedComponent "38772">
+    <!ENTITY augmentedMaterial "38756">
+    <!ENTITY crystallineTool "38737">
+    <!ENTITY crystallineComponent "38780">
+    <!ENTITY crystallineMaterial "38764">
+    <!ENTITY choraZoiTool "39732">
+    <!ENTITY choraZoiComponent "39789">
+    <!ENTITY choraZoiMaterial "39773">
+    <!ENTITY brilliantTool "39743">
+    <!ENTITY brilliantComponent "39797">
+    <!ENTITY brilliantMaterial "39781">
+    <!ENTITY vrandticTool "41180">
+    <!ENTITY vrandticComponent "41270">
+    <!ENTITY vrandticMaterial "41254">
+    <!ENTITY lodestarTool "41191">
+    <!ENTITY lodestarComponent "41278">
+    <!ENTITY lodestarMaterial "41262">
+]>
 <Profile>
-    <Name>Resplendent CRp Tool</Name>
+    <Name>Resplendent CRP Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!-- Brilliant Tool (Step 5) -->
-        <While condition="not HasItem(39743) and HasItem(39732) and not NqHasAtLeast(39797,90)">
-            <Log Message="Crafting Connoisseur's Bookshelf for Brilliant Carpenter's Components." />
-            <SplendorousOrder ItemToCraft="39781" Total="90" RewardItemId="39797" Job="Carpenter" />
+        <While condition="not HasItem(&brilliantTool;) and HasItem(&choraZoiTool;) and not NqHasAtLeast(&brilliantComponent;,90)">
+            <Log Message="Crafting for Brilliant &job;'s Components." />
+            <SplendorousOrder ItemToCraft="&brilliantMaterial;" Total="90" RewardItemId="&brilliantComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
-        <If Condition="NqHasAtLeast(39797,90)">
-            <ChangeClass Job="Carpenter" />
+        <If Condition="NqHasAtLeast(&brilliantComponent;,90)">
+            <ChangeClass Job="&job;" />
             <LLoadProfile Path="../Quests/A Tool without Compare.xml" />
         </If>
         <!-- Chora-Zoi's Crystalline Tool (Step 4) -->
         <!-- Check The Joy of Zoi Quest Completion -->
-        <If Condition="not IsQuestCompleted(70303) and HasItem(38737)">
+        <If Condition="not IsQuestCompleted(70303) and HasItem(&crystallineTool;)">
             <LLoadProfile Path="../Quests/The Joy of Zoi.xml" />
         </If>
-        <While condition="not HasItem(39732) and HasItem(38737) and not NqHasAtLeast(39789,90)">
-            <Log Message="Crafting Connoisseur's Picture Frame for Customized Carpenter's Components." />
-            <SplendorousOrder ItemToCraft="39773" Total="90" RewardItemId="39789" Job="Carpenter" />
+        <While condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90)">
+            <Log Message="Crafting for Customized &job;'s Components." />
+            <SplendorousOrder ItemToCraft="&choraZoiMaterial;" Total="90" RewardItemId="&choraZoiComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
-        <If Condition="NqHasAtLeast(39789,90)">
-            <ChangeClass Job="Carpenter" />
+        <If Condition="NqHasAtLeast(&choraZoiComponent;,90)">
+            <ChangeClass Job="&job;" />
             <LLoadProfile Path="../Quests/A Tool of Her Own.xml" />
         </If>
         <!-- Crystalline Tool (Step 3) -->
-        <While condition="not HasItem(38737) and HasItem(38726) and not NqHasAtLeast(38780,90)">
-            <Log Message="Crafting Connoisseur's Marimba for Adaptive Carpenter's Components." />
-            <SplendorousOrder ItemToCraft="38764" Total="90" RewardItemId="38780" Job="Carpenter" />
+        <While condition="not HasItem(&crystallineTool;) and HasItem(&augmentedTool;) and not NqHasAtLeast(&crystallineComponent;,90)">
+            <Log Message="Crafting for Adaptive &job;'s Components." />
+            <SplendorousOrder ItemToCraft="&crystallineMaterial;" Total="90" RewardItemId="&crystallineComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
-        <If Condition="NqHasAtLeast(38780,90)">
-            <ChangeClass Job="Carpenter" />
+        <If Condition="NqHasAtLeast(&crystallineComponent;,90)">
+            <ChangeClass Job="&job;" />
             <LLoadProfile Path="../Quests/An Adaptive Tool.xml" />
         </If>
         <!-- Augmented Splendorous Tool (Step 2) -->
-        <While Condition="not HasItem(38726) and HasItem(38715) and not NqHasAtLeast(38772,60)">
-            <Log Message="Crafting Connoisseur's Chair for Splendorous Carpenter's Components." />
-            <SplendorousOrder ItemToCraft="38756" Total="60" RewardItemId="38772" Job="Carpenter" />
+        <While Condition="not HasItem(&augmentedTool;) and HasItem(&splendorousTool;) and not NqHasAtLeast(&augmentedComponent;,60)">
+            <Log Message="Crafting for Splendorous &job;'s Components." />
+            <SplendorousOrder ItemToCraft="&augmentedMaterial;" Total="60" RewardItemId="&augmentedComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
-        <If Condition="NqHasAtLeast(38772,60)">
-            <ChangeClass Job="Carpenter" />
+        <If Condition="NqHasAtLeast(&augmentedComponent;,60)">
+            <ChangeClass Job="&job;" />
             <LLoadProfile Path="../Quests/A Dedicated Tool.xml" />
         </If>
         <!-- Splendorous Tool (Step 1) -->
-        <If Condition="not IsQuestCompleted(70266) and not HasItem(38715) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
-            <Log Message="Doing initial quest on Carpenter." />
-            <ChangeClass Job="Carpenter" />
+        <If Condition="not IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
+            <Log Message="Doing initial quest on &job;." />
+            <ChangeClass Job="&job;" />
             <AutoInventoryEquip />
             <LLoadProfile Path="../Quests/An Original Improvement.xml" />
         </If>
-        <If Condition="IsQuestCompleted(70266) and not HasItem(38715) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
-            <Log Message="Buying Carpenter tool with scrips." />
-            <Lisbeth Json="[{'Group' :1,'Item' :38715,'Amount' :1,'Enabled' :true,'Type' :'Exchange' }]" />
+        <If Condition="IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
+            <Log Message="Buying &job; tool with scrips." />
+            <Lisbeth Json="[{'Group':1,'Item':&splendorousTool;,'Amount':1,'Enabled':true,'Type':'Exchange' }]" />
         </If>
         <LLoadProfile Path="../Splendorous Start.xml" />
     </Order>

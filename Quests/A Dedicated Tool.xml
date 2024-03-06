@@ -6,26 +6,29 @@ Required: LLamaLibrary BotBase
 		  Exbuddy Plugin
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
+<!DOCTYPE Profile [
+	<!ENTITY crpTool "38715">
+]>
 <Profile>
-    <Name>A Dedicated Tool</Name>
-    <Order>
-        <If Condition="not HasQuest(70267)">
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <If Condition="IsQuestAcceptQualified(70267)">
-                <RunCode name="A Dedicated Tool" />
-            </If>
-        </If>
-        <If Condition="HasQuest(70267) and not IsQuestCompleted(70267) and GetQuestStep(70267) == 255">
-            <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == 38715">
-                <EquipOtherWeapon />
-            </While>
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <TurnIn QuestId="70267" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
-        </If>
-        <LLoadProfile Path="../Splendorous Start.xml" />
-    </Order>
-    <CodeChunks>
-        <CodeChunk Name="A Dedicated Tool">
+	<Name>A Dedicated Tool</Name>
+	<Order>
+		<If Condition="not HasQuest(70267)">
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<If Condition="IsQuestAcceptQualified(70267)">
+				<RunCode name="A Dedicated Tool" />
+			</If>
+		</If>
+		<If Condition="HasQuest(70267) and not IsQuestCompleted(70267) and GetQuestStep(70267) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand] .RawItemId == &crpTool;">
+				<EquipOtherWeapon />
+			</While>
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<TurnIn QuestId="70267" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+		</If>
+		<LLoadProfile Path="../Splendorous Start.xml" />
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="A Dedicated Tool">
 			<![CDATA[
 				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
 
@@ -81,5 +84,5 @@ Required: LLamaLibrary BotBase
 					
 			]]>			
 		</CodeChunk>
-    </CodeChunks>
+	</CodeChunks>
 </Profile>

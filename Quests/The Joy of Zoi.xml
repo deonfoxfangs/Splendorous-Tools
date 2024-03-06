@@ -7,7 +7,7 @@ Required: LLamaLibrary BotBase
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
 <Profile>
-    <Name>An Original Improvement</Name>
+    <Name>The Joy of Zoi</Name>
     <Order>
         <If Condition="not HasQuest(70303)">
             <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />

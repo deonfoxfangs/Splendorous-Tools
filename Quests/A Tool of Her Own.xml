@@ -6,26 +6,29 @@ Required: LLamaLibrary BotBase
 		  Exbuddy Plugin
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
+<!DOCTYPE Profile [
+	<!ENTITY crpTool "38737">
+]>
 <Profile>
-    <Name>A Tool of Her Own</Name>
-    <Order>
-        <If Condition="not HasQuest(70304)">
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <If Condition="IsQuestAcceptQualified(70304)">
-                <RunCode name="A Tool of Her Own" />
-            </If>
-        </If>
-        <If Condition="HasQuest(70304) and not IsQuestCompleted(70304) and GetQuestStep(70304) == 255">
-            <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == 38737">
-                <EquipOtherWeapon />
-            </While>
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <TurnIn QuestId="70304" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
-        </If>
-        <LLoadProfile Path="../Splendorous Start.xml" />
-    </Order>
-    <CodeChunks>
-        <CodeChunk Name="A Tool of Her Own">
+	<Name>A Tool of Her Own</Name>
+	<Order>
+		<If Condition="not HasQuest(70304)">
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<If Condition="IsQuestAcceptQualified(70304)">
+				<RunCode name="A Tool of Her Own" />
+			</If>
+		</If>
+		<If Condition="HasQuest(70304) and not IsQuestCompleted(70304) and GetQuestStep(70304) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == &crpTool;">
+				<EquipOtherWeapon />
+			</While>
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<TurnIn QuestId="70304" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+		</If>
+		<LLoadProfile Path="../Splendorous Start.xml" />
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="A Tool of Her Own">
 			<![CDATA[
 				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
 
@@ -81,5 +84,5 @@ Required: LLamaLibrary BotBase
 					
 			]]>			
 		</CodeChunk>
-    </CodeChunks>
+	</CodeChunks>
 </Profile>

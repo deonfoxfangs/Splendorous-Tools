@@ -6,26 +6,29 @@ Required: LLamaLibrary BotBase
 		  Exbuddy Plugin
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
+<!DOCTYPE Profile [
+	<!ENTITY crpTool "39732">
+]>
 <Profile>
-    <Name>A Tool without Compare</Name>
-    <Order>
-        <If Condition="not HasQuest(70305)">
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <If Condition="IsQuestAcceptQualified(70305)">
-                <RunCode name="A Tool without Compare" />
-            </If>
-        </If>
-        <If Condition="HasQuest(70305) and not IsQuestCompleted(70305) and GetQuestStep(70305) == 255">
-            <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == 39732">
-                <EquipOtherWeapon />
-            </While>
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <TurnIn QuestId="70305" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
-        </If>
-        <LLoadProfile Path="../Splendorous Start.xml" />
-    </Order>
-    <CodeChunks>
-        <CodeChunk Name="A Tool without Compare">
+	<Name>A Tool without Compare</Name>
+	<Order>
+		<If Condition="not HasQuest(70305)">
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<If Condition="IsQuestAcceptQualified(70305)">
+				<RunCode name="A Tool without Compare" />
+			</If>
+		</If>
+		<If Condition="HasQuest(70305) and not IsQuestCompleted(70305) and GetQuestStep(70305) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == &crpTool;">
+				<EquipOtherWeapon />
+			</While>
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<TurnIn QuestId="70305" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+		</If>
+		<LLoadProfile Path="../Splendorous Start.xml" />
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="A Tool without Compare">
 			<![CDATA[
 				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
 
@@ -81,5 +84,5 @@ Required: LLamaLibrary BotBase
 					
 			]]>			
 		</CodeChunk>
-    </CodeChunks>
+	</CodeChunks>
 </Profile>
