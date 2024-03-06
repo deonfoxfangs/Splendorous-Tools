@@ -29,7 +29,7 @@ Required: LLamaLibrary BotBase
     <!ENTITY lodestarMaterial "41263">
 ]>
 <Profile>
-    <Name>Resplendent BSM Tool</Name>
+    <Name>Splendorous BSM Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!--- Lodestar Tool (Step 7) -->

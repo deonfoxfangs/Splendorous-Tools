@@ -29,7 +29,7 @@ Required: LLamaLibrary BotBase
     <!ENTITY lodestarMaterial "41265">
 ]>
 <Profile>
-    <Name>Resplendent GSM Tool</Name>
+    <Name>Splendorous GSM Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!--- Lodestar Tool (Step 7) -->

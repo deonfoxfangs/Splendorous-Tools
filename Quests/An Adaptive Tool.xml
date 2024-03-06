@@ -7,7 +7,8 @@ Required: LLamaLibrary BotBase
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
 <!DOCTYPE Profile [
-	<!ENTITY crpTool "38726">
+	<!ENTITY minTool "38726">
+	<!ENTITY maxTool "38733">
 ]>
 <Profile>
 	<Name>An Adaptive Tool</Name>
@@ -18,8 +19,9 @@ Required: LLamaLibrary BotBase
 				<RunCode name="An Adaptive Tool" />
 			</If>
 		</If>
-		<If Condition="HasQuest(70268) and not IsQuestCompleted(70268) and GetQuestStep(70268) == 255">
-			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == &crpTool;">
+		<If Condition="HasQuest(70268) and GetQuestStep(70268) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId &gt;= &minTool;
+							  and ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId &lt;= &maxTool;">
 				<EquipOtherWeapon />
 			</While>
 			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />

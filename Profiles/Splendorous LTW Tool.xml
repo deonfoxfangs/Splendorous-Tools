@@ -29,7 +29,7 @@ Required: LLamaLibrary BotBase
     <!ENTITY lodestarMaterial "41266">
 ]>
 <Profile>
-    <Name>Resplendent LTW Tool</Name>
+    <Name>Splendorous LTW Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!--- Lodestar Tool (Step 7) -->

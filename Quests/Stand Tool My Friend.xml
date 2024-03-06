@@ -7,28 +7,30 @@ Required: LLamaLibrary BotBase
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
 <!DOCTYPE Profile [
-    <!ENTITY crpTool "41180">
+	<!ENTITY minTool "41180">
+	<!ENTITY maxTool "41187">
 ]>
 <Profile>
-    <Name>Stand Tool, My Friend</Name>
-    <Order>
-        <If Condition="not HasQuest(70340)">
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <If Condition="IsQuestAcceptQualified(70340)">
-                <RunCode name="Stand Tool My Friend" />
-            </If>
-        </If>
-        <If Condition="HasQuest(70340) and not IsQuestCompleted(70340) and GetQuestStep(70340) == 255">
-            <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == &crpTool;">
-                <EquipOtherWeapon />
-            </While>
-            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
-            <TurnIn QuestId="70340" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
-        </If>
-        <LLoadProfile Path="../Splendorous Start.xml" />
-    </Order>
-    <CodeChunks>
-        <CodeChunk Name="Stand Tool My Friend">
+	<Name>Stand Tool, My Friend</Name>
+	<Order>
+		<If Condition="not HasQuest(70340)">
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<If Condition="IsQuestAcceptQualified(70340)">
+				<RunCode name="Stand Tool My Friend" />
+			</If>
+		</If>
+		<If Condition="HasQuest(70340) and GetQuestStep(70340) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId &gt;= &minTool;
+							  and ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId &lt;= &maxTool;">
+				<EquipOtherWeapon />
+			</While>
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<TurnIn QuestId="70340" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+		</If>
+		<LLoadProfile Path="../Splendorous Start.xml" />
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="Stand Tool My Friend">
 			<![CDATA[
 				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
 
@@ -84,5 +86,5 @@ Required: LLamaLibrary BotBase
 					
 			]]>			
 		</CodeChunk>
-    </CodeChunks>
+	</CodeChunks>
 </Profile>

@@ -10,26 +10,26 @@ Required: LLamaLibrary BotBase
     <!ENTITY job "Carpenter">
     <!ENTITY splendorousTool "38715">
     <!ENTITY augmentedTool "38726">
+    <!ENTITY crystallineTool "38737">
+    <!ENTITY choraZoiTool "39732">
+    <!ENTITY brilliantTool "39743">
+    <!ENTITY vrandticTool "41180">
+    <!ENTITY lodestarTool "41191">
     <!ENTITY augmentedComponent "38772">
     <!ENTITY augmentedMaterial "38756">
-    <!ENTITY crystallineTool "38737">
     <!ENTITY crystallineComponent "38780">
     <!ENTITY crystallineMaterial "38764">
-    <!ENTITY choraZoiTool "39732">
     <!ENTITY choraZoiComponent "39789">
     <!ENTITY choraZoiMaterial "39773">
-    <!ENTITY brilliantTool "39743">
     <!ENTITY brilliantComponent "39797">
     <!ENTITY brilliantMaterial "39781">
-    <!ENTITY vrandticTool "41180">
     <!ENTITY vrandticComponent "41270">
     <!ENTITY vrandticMaterial "41254">
-    <!ENTITY lodestarTool "41191">
     <!ENTITY lodestarComponent "41278">
     <!ENTITY lodestarMaterial "41262">
 ]>
 <Profile>
-    <Name>Resplendent CRP Tool</Name>
+    <Name>Splendorous CRP Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!--- Lodestar Tool (Step 7) -->
