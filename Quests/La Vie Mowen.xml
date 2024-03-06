@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>La Vie Mowen</Name>
+    <Order>
+        <If Condition="not HasQuest(70306)">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <If Condition="IsQuestAcceptQualified(70306)">
+                <LLSmallTalk WaitTime="1500" />
+                <LLPickupQuest QuestId="70306" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085"></LLPickupQuest>
+                <LLSmallTalk WaitTime="1500" />
+            </If>
+        </If>
+        <If Condition="HasQuest(70306) and not IsQuestCompleted(70306) and GetQuestStep(70306) == 255">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <TurnIn QuestId="70306" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+</Profile> 

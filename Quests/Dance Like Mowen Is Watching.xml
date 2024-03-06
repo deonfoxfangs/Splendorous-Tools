@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>Dance Like Mowen Is Watching</Name>
+    <Order>
+        <If Condition="not HasQuest(70338)">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <If Condition="IsQuestAcceptQualified(70338)">
+                <LLSmallTalk WaitTime="1500" />
+                <LLPickupQuest QuestId="70338" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085"></LLPickupQuest>
+                <LLSmallTalk WaitTime="1500" />
+            </If>
+        </If>
+        <If Condition="HasQuest(70338) and not IsQuestCompleted(70338) and GetQuestStep(70338) == 1">
+            <GetTo ZoneId="819" XYZ="11.42896, -0.01531982, -12.71082" />
+            <UseObject NpcIds="2013557" XYZ="11.42896, -0.01531982, -12.71082" Radius="25" QuestId="70338" StepId="1" />
+        </If>
+        <If Condition="HasQuest(70338) and not IsQuestCompleted(70338) and GetQuestStep(70338) == 255">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <TurnIn QuestId="70338" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+</Profile> 

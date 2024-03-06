@@ -7,29 +7,29 @@ Required: LLamaLibrary BotBase
           ALL currently obtained Splendorous weapons in inventory or Armory.
 -->
 <!DOCTYPE Profile [
-    <!ENTITY job "Carpenter">
-    <!ENTITY splendorousTool "38715">
-    <!ENTITY augmentedTool "38726">
-    <!ENTITY augmentedComponent "38772">
-    <!ENTITY augmentedMaterial "38756">
-    <!ENTITY crystallineTool "38737">
-    <!ENTITY crystallineComponent "38780">
-    <!ENTITY crystallineMaterial "38764">
-    <!ENTITY choraZoiTool "39732">
-    <!ENTITY choraZoiComponent "39789">
-    <!ENTITY choraZoiMaterial "39773">
-    <!ENTITY brilliantTool "39743">
-    <!ENTITY brilliantComponent "39797">
-    <!ENTITY brilliantMaterial "39781">
-    <!ENTITY vrandticTool "41180">
-    <!ENTITY vrandticComponent "41270">
-    <!ENTITY vrandticMaterial "41254">
-    <!ENTITY lodestarTool "41191">
-    <!ENTITY lodestarComponent "41278">
-    <!ENTITY lodestarMaterial "41262">
+    <!ENTITY job "Alchemist">
+    <!ENTITY splendorousTool "38721">
+    <!ENTITY augmentedTool "38732">
+    <!ENTITY crystallineTool "38743">
+    <!ENTITY choraZoiTool "39738">
+    <!ENTITY brilliantTool "39749">
+    <!ENTITY vrandticTool "41186">
+    <!ENTITY lodestarTool "41197">
+    <!ENTITY augmentedComponent "38778">
+    <!ENTITY augmentedMaterial "38762">
+    <!ENTITY crystallineComponent "38785">
+    <!ENTITY crystallineMaterial "38770">
+    <!ENTITY choraZoiComponent "39795">
+    <!ENTITY choraZoiMaterial "39779">
+    <!ENTITY brilliantComponent "39803">
+    <!ENTITY brilliantMaterial "39787">
+    <!ENTITY vrandticComponent "41276">
+    <!ENTITY vrandticMaterial "41260">
+    <!ENTITY lodestarComponent "41284">
+    <!ENTITY lodestarMaterial "41268">
 ]>
 <Profile>
-    <Name>Resplendent CRP Tool</Name>
+    <Name>Resplendent ALC Tool</Name>
     <Order>
         <TurnInSplendorous />
         <!--- Lodestar Tool (Step 7) -->

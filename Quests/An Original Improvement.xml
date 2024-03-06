@@ -27,7 +27,7 @@ Required: LLamaLibrary BotBase
             <TurnIn QuestId="70266" NpcId="1045073" XYZ="-35.1416, 19.99979, -172.8085" />
         </If>
         <UseInventoryItem ItemID="38809" />
-        <!-- <RunCode Name="UseCoffer" /> -->
+        <!--<RunCode Name="UseCoffer" />-->
         <LLoadProfile Path="../Splendorous Start.xml" />
     </Order>
     <CodeChunks>
