@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+	<Name>An Adaptive Tool</Name>
+	<Order>
+		<If Condition="not HasQuest(70268)">
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<If Condition="IsQuestAcceptQualified(70268)">
+				<RunCode name="An Adaptive Tool" />
+			</If>
+		</If>
+		<If Condition="HasQuest(70268) and not IsQuestCompleted(70268) and GetQuestStep(70268) == 255">
+			<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == 38726">
+				<EquipOtherWeapon />
+			</While>
+			<GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+			<TurnIn QuestId="70268" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+		</If>
+		<LLoadProfile Path="../Splendorous Start.xml" />
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="An Adaptive Tool">
+			<![CDATA[
+				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
+
+					npcId.Interact();			
+
+					await Coroutine.Wait(10000, () => SelectIconString.IsOpen);
+					
+					if (!SelectIconString.IsOpen)
+					{
+						npcId.Interact();
+
+						await Coroutine.Wait(10000, () => SelectIconString.IsOpen);
+					}	
+					
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					{
+						Logging.WriteDiagnostic("Choosing current quest.");
+                        Logging.WriteDiagnostic("Choosing 'An Adaptive Tool'.");
+                        SelectIconString.ClickLineContains(("An Adaptive Tool"));
+					}									
+
+					await Coroutine.Wait(10000, () => Talk.DialogOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					while (Talk.DialogOpen)
+					{
+						Talk.Next();
+						await Coroutine.Wait(1000, () => !Talk.DialogOpen);
+						await Coroutine.Wait(1000, () => Talk.DialogOpen);
+						await Coroutine.Yield();
+					}	
+					
+					await Coroutine.Wait(10000, () => SelectString.IsOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					{
+						Logging.WriteDiagnostic("Choosing current class.");
+						ff14bot.RemoteWindows.SelectString.ClickSlot(1);
+					}
+
+					await Buddy.Coroutines.Coroutine.Sleep(1000);
+					await Coroutine.Wait(1000, () => JournalAccept.IsOpen);
+					JournalAccept.Accept();					
+
+					await Coroutine.Wait(10000, () => Talk.DialogOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					while (Talk.DialogOpen)
+					{
+						Talk.Next();
+						await Coroutine.Wait(1000, () => !Talk.DialogOpen);
+						await Coroutine.Wait(3000, () => Talk.DialogOpen);
+						await Coroutine.Yield();
+					}	
+					
+					await Coroutine.Wait(10000, () => SelectString.IsOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					{
+						Logging.WriteDiagnostic("Choosing Dialogue Option.");
+						ff14bot.RemoteWindows.SelectString.ClickSlot(0);
+					}
+
+					await Coroutine.Wait(10000, () => Talk.DialogOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					while (Talk.DialogOpen)
+					{
+						Talk.Next();
+						await Coroutine.Wait(1000, () => !Talk.DialogOpen);
+						await Coroutine.Wait(6000, () => Talk.DialogOpen);
+						await Coroutine.Yield();
+					}						
+			]]>			
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

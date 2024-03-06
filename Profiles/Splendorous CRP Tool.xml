@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>Resplendent CRp Tool</Name>
+    <Order>
+        <TurnInSplendorous />
+        <!-- Brilliant Tool (Step 5) -->
+        <While condition="not HasItem(39743) and HasItem(39732) and not NqHasAtLeast(39797,90)">
+            <Log Message="Crafting Connoisseur's Bookshelf for Brilliant Carpenter's Components." />
+            <SplendorousOrder ItemToCraft="39781" Total="90" RewardItemId="39797" Job="Carpenter" />
+            <TurnInSplendorous />
+        </While>
+        <If Condition="NqHasAtLeast(39797,90)">
+            <ChangeClass Job="Carpenter" />
+            <LLoadProfile Path="../Quests/A Tool without Compare.xml" />
+        </If>
+        <!-- Chora-Zoi's Crystalline Tool (Step 4) -->
+        <!-- Check The Joy of Zoi Quest Completion -->
+        <If Condition="not IsQuestCompleted(70303) and HasItem(38737)">
+            <LLoadProfile Path="../Quests/The Joy of Zoi.xml" />
+        </If>
+        <While condition="not HasItem(39732) and HasItem(38737) and not NqHasAtLeast(39789,90)">
+            <Log Message="Crafting Connoisseur's Picture Frame for Customized Carpenter's Components." />
+            <SplendorousOrder ItemToCraft="39773" Total="90" RewardItemId="39789" Job="Carpenter" />
+            <TurnInSplendorous />
+        </While>
+        <If Condition="NqHasAtLeast(39789,90)">
+            <ChangeClass Job="Carpenter" />
+            <LLoadProfile Path="../Quests/A Tool of Her Own.xml" />
+        </If>
+        <!-- Crystalline Tool (Step 3) -->
+        <While condition="not HasItem(38737) and HasItem(38726) and not NqHasAtLeast(38780,90)">
+            <Log Message="Crafting Connoisseur's Marimba for Adaptive Carpenter's Components." />
+            <SplendorousOrder ItemToCraft="38764" Total="90" RewardItemId="38780" Job="Carpenter" />
+            <TurnInSplendorous />
+        </While>
+        <If Condition="NqHasAtLeast(38780,90)">
+            <ChangeClass Job="Carpenter" />
+            <LLoadProfile Path="../Quests/An Adaptive Tool.xml" />
+        </If>
+        <!-- Augmented Splendorous Tool (Step 2) -->
+        <While Condition="not HasItem(38726) and HasItem(38715) and not NqHasAtLeast(38772,60)">
+            <Log Message="Crafting Connoisseur's Chair for Splendorous Carpenter's Components." />
+            <SplendorousOrder ItemToCraft="38756" Total="60" RewardItemId="38772" Job="Carpenter" />
+            <TurnInSplendorous />
+        </While>
+        <If Condition="NqHasAtLeast(38772,60)">
+            <ChangeClass Job="Carpenter" />
+            <LLoadProfile Path="../Quests/A Dedicated Tool.xml" />
+        </If>
+        <!-- Splendorous Tool (Step 1) -->
+        <If Condition="not IsQuestCompleted(70266) and not HasItem(38715) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
+            <Log Message="Doing initial quest on Carpenter." />
+            <ChangeClass Job="Carpenter" />
+            <AutoInventoryEquip />
+            <LLoadProfile Path="../Quests/An Original Improvement.xml" />
+        </If>
+        <If Condition="IsQuestCompleted(70266) and not HasItem(38715) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
+            <Log Message="Buying Carpenter tool with scrips." />
+            <Lisbeth Json="[{'Group' :1,'Item' :38715,'Amount' :1,'Enabled' :true,'Type' :'Exchange' }]" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+</Profile>

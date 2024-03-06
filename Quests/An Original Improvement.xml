@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>An Original Improvement</Name>
+    <Order>
+        <If Condition="not HasQuest(70266)">
+            <GetTo ZoneId="819" XYZ="-167.6814, 0, 9.964111" />
+            <If Condition="IsQuestAcceptQualified(70266)">
+                <LLSmallTalk WaitTime="1500" />
+                <LLPickupQuest QuestId="70266" NpcId="1045070" XYZ="-167.6814, 0, 9.964111"></LLPickupQuest>
+                <LLSmallTalk WaitTime="1500" />
+            </If>
+        </If>
+        <If Condition="HasQuest(70266) and not IsQuestCompleted(70266) and GetQuestStep(70266) == 1">
+            <GetTo ZoneId="819" XYZ="-45.24304, 19.99979, -155.169" />
+            <TalkTo QuestId="70266" StepId="1" NpcId="1045071" XYZ="-45.24304, 19.99979, -155.169" />
+            <LLSmallTalk WaitTime="1500" />
+        </If>
+        <If Condition="HasQuest(70266) and not IsQuestCompleted(70266) and GetQuestStep(70266) == 255">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <TurnIn QuestId="70266" NpcId="1045073" XYZ="-35.1416, 19.99979, -172.8085" />
+        </If>
+        <UseInventoryItem ItemID="38809" />
+        <!-- <RunCode Name="UseCoffer" /> -->
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+    <CodeChunks>
+        <CodeChunk Name="UseCoffer">
+            <![CDATA[
+                    await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
+                    await Coroutine.Sleep(3000);
+
+                    List<BagSlot> coffers = InventoryManager.FilledSlots
+                                                        .Where(bs => bs.Item.ItemAction > 0
+                                                                    && bs.CanUse()
+                                                                    && bs.EnglishName.StartsWith("Splendorous Coffer"))
+                                                        .ToList();
+
+                    if (coffers.Any())
+                    {
+                        foreach (var slot in coffers)
+                        {
+                            Logging.Write("Using: {0}", slot.Name);
+                            slot.UseItem();
+                            if (await Coroutine.Wait(4500, () => Core.Me.IsCasting))
+                            {
+                                await Coroutine.Wait(5000, () => !Core.Me.IsCasting);
+                                await Coroutine.Sleep(2500);
+                            }
+                        }
+                    }
+            ]]>
+        </CodeChunk>
+    </CodeChunks>
+</Profile> 

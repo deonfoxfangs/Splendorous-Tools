@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>An Original Improvement</Name>
+    <Order>
+        <If Condition="not HasQuest(70303)">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <If Condition="IsQuestAcceptQualified(70303)">
+                <LLSmallTalk WaitTime="1500" />
+                <LLPickupQuest QuestId="70303" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085"></LLPickupQuest>
+                <LLSmallTalk WaitTime="1500" />
+            </If>
+        </If>
+        <If Condition="HasQuest(70303) and not IsQuestCompleted(70303) and GetQuestStep(70303) == 1">
+            <GetTo ZoneId="820" XYZ="12.98535, 82.05, -25.22321" />
+            <TalkTo QuestId="70303" StepId="1" NpcId="1027544" XYZ="12.98535, 82.05, -25.22321" />
+            <LLSmallTalk WaitTime="1500" />
+        </If>
+        <If Condition="HasQuest(70303) and not IsQuestCompleted(70303) and GetQuestStep(70303) == 255">
+            <GetTo ZoneId="819" XYZ="-35.1416, 19.99979, -172.8085" />
+            <TurnIn QuestId="70303" NpcId="1045067" XYZ="-35.1416, 19.99979, -172.8085" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+</Profile> 

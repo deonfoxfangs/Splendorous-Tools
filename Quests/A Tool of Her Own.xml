@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<Profile>
+    <Name>A Tool of Her Own</Name>
+    <Order>
+        <If Condition="not HasQuest(70304)">
+            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+            <If Condition="IsQuestAcceptQualified(70304)">
+                <RunCode name="A Tool of Her Own" />
+            </If>
+        </If>
+        <If Condition="HasQuest(70304) and not IsQuestCompleted(70304) and GetQuestStep(70304) == 255">
+            <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId == 38737">
+                <EquipOtherWeapon />
+            </While>
+            <GetTo ZoneId="819" XYZ="-33.12738, 19.99979, -173.3273" />
+            <TurnIn QuestId="70304" NpcId="1045068" XYZ="-33.12738, 19.99979, -173.3273" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+    <CodeChunks>
+        <CodeChunk Name="A Tool of Her Own">
+			<![CDATA[
+				var npcId = GameObjectManager.GetObjectByNPCId(1045068);
+
+					npcId.Interact();			
+
+					await Coroutine.Wait(10000, () => SelectIconString.IsOpen);
+					
+					if (!SelectIconString.IsOpen)
+					{
+						npcId.Interact();
+
+						await Coroutine.Wait(10000, () => SelectIconString.IsOpen);
+					}	
+					
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					{
+						Logging.WriteDiagnostic("Choosing current quest.");
+                        Logging.WriteDiagnostic("Choosing 'A Tool of Her Own'.");
+                        SelectIconString.ClickLineContains(("A Tool of Her Own"));
+					}									
+
+					await Coroutine.Wait(10000, () => Talk.DialogOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					while (Talk.DialogOpen)
+					{
+						Talk.Next();
+						await Coroutine.Wait(1000, () => !Talk.DialogOpen);
+						await Coroutine.Wait(1000, () => Talk.DialogOpen);
+						await Coroutine.Yield();
+					}	
+					
+					await Coroutine.Wait(10000, () => SelectString.IsOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					{
+						Logging.WriteDiagnostic("Choosing current class.");
+						ff14bot.RemoteWindows.SelectString.ClickSlot(1);
+					}
+
+					await Buddy.Coroutines.Coroutine.Sleep(1000);
+					await Coroutine.Wait(1000, () => JournalAccept.IsOpen);
+					JournalAccept.Accept();					
+
+					await Coroutine.Wait(10000, () => Talk.DialogOpen);
+					await Buddy.Coroutines.Coroutine.Sleep(500);
+					while (Talk.DialogOpen)
+					{
+						Talk.Next();
+						await Coroutine.Wait(1000, () => !Talk.DialogOpen);
+						await Coroutine.Wait(10000, () => Talk.DialogOpen);
+						await Coroutine.Yield();
+					}
+
+					
+			]]>			
+		</CodeChunk>
+    </CodeChunks>
+</Profile>
