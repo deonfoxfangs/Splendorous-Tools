@@ -68,7 +68,7 @@ Required: LLamaLibrary BotBase
         <While condition="not HasItem(&brilliantTool;) and HasItem(&choraZoiTool;) and not NqHasAtLeast(&brilliantComponent;,90)">
             <Log Message="Crafting for Brilliant &job;'s Components." />
             <RunCode name="brilliantToast" />
-            <SplendorousOrder ItemToCraft="&brilliantMaterial;" Total="105" RewardItemId="&brilliantComponent;" Job="&job;" />
+            <SplendorousOrder ItemToCraft="&brilliantMaterial;" Total="90" RewardItemId="&brilliantComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
         <If Condition="NqHasAtLeast(&brilliantComponent;,90)">
@@ -84,7 +84,7 @@ Required: LLamaLibrary BotBase
         <While condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90)">
             <Log Message="Crafting for Customized &job;'s Components." />
             <RunCode name="choraToast" />
-            <SplendorousOrder ItemToCraft="&choraZoiMaterial;" Total="99" RewardItemId="&choraZoiComponent;" Job="&job;" />
+            <SplendorousOrder ItemToCraft="&choraZoiMaterial;" Total="90" RewardItemId="&choraZoiComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
         <If Condition="NqHasAtLeast(&choraZoiComponent;,90)">

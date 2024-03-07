@@ -68,7 +68,7 @@ Required: LLamaLibrary BotBase
         <While condition="not HasItem(&brilliantTool;) and HasItem(&choraZoiTool;) and not NqHasAtLeast(&brilliantComponent;,90)">
             <Log Message="Crafting for Brilliant &job;'s Components." />
             <RunCode name="brilliantToast" />
-            <SplendorousOrder ItemToCraft="&brilliantMaterial;" Total="105" RewardItemId="&brilliantComponent;" Job="&job;" />
+            <SplendorousOrder ItemToCraft="&brilliantMaterial;" Total="90" RewardItemId="&brilliantComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
         <If Condition="NqHasAtLeast(&brilliantComponent;,90)">
@@ -81,14 +81,11 @@ Required: LLamaLibrary BotBase
             <ChangeClass Job="&job;" />
             <LLoadProfile Path="../Quests/The Joy of Zoi.xml" />
         </If>
-        <If Condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90) and not NqHasAtLeast(5274,35)">
-            <RunCode Name="miniumWarning" />
-            <BuyGCItem ItemId="5274" Count="35" />
-        </If>
         <While condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90)">
-            <Log Message="Crafting for Customized &job;'s Components." />
             <RunCode name="choraToast" />
-            <SplendorousOrder ItemToCraft="&choraZoiMaterial;" Total="99" RewardItemId="&choraZoiComponent;" Job="&job;" />
+            <Log Message="Crafting for Customized &job;'s Components." />
+            <RunCode Name="choraZoiCraft" />
+            <SplendorousOrder ItemToCraft="&choraZoiMaterial;" Total="90" RewardItemId="&choraZoiComponent;" Job="&job;" />
             <TurnInSplendorous />
         </While>
         <If Condition="NqHasAtLeast(&choraZoiComponent;,90)">
@@ -173,16 +170,24 @@ Required: LLamaLibrary BotBase
                 Core.OverlayManager.AddToast(() => "Crafting for Lodestar Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
             ]]>
 	    </CodeChunk>
-        <CodeChunk Name="miniumWarning">
+        <CodeChunk Name="choraZoiCraft">
             <![CDATA[
-                var gcRank = LlamaLibrary.Extensions.LocalPlayerExtensions.GCRank(Core.Me);
-                var gcCurr = LlamaLibrary.Extensions.LocalPlayerExtensions.GCSeals(Core.Me);
+                var alreadyHas = (int)Math.Ceiling((decimal)(90 - (decimal)(ConditionParser.ItemCount((uint)39791))));
+                var miniumToOrder = Math.Min((int)Math.Ceiling((decimal)alreadyHas/3) - ConditionParser.ItemCount((uint)5274), (int)(InventoryManager.FreeSlots - 5 - ConditionParser.ItemCount((uint)5274)));
 
-                if (!(gcRank >= 9 && gcCurr >= 7000)) {
-                    Core.OverlayManager.AddToast(() => "You must manually collect 35 Minium before proceeding.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(208,52,44), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+                if (miniumToOrder > 0) {
+                    var gcRank = LlamaLibrary.Extensions.LocalPlayerExtensions.GCRank(Core.Me);
+                    var gcCurr = LlamaLibrary.Extensions.LocalPlayerExtensions.GCSeals(Core.Me);
 
-                    TreeRoot.Stop();  
-                }
+                    if (gcRank >= 9 && gcCurr >= miniumToOrder*200) {
+                        await LlamaLibrary.Helpers.GrandCompanyShop.BuyKnownItem(5274, miniumToOrder);
+                    }
+                    else {
+                        Core.OverlayManager.AddToast(() => "You must manually collect at least " + miniumToOrder + " Minium before proceeding.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(208,52,44), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+
+                        TreeRoot.Stop();   
+                    }
+                }          
             ]]>
 	    </CodeChunk>
     </CodeChunks>
