@@ -14,7 +14,9 @@ RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Fi
 
 Some of the crafts require items that cannot be obtained by Lisbeth. These items must be collected on your own or else the bot will hang when it reaches the corresponding step. Items known so far include:
 
-- 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/) (**Armorer** Step 4)
+- 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/)\* (**Armorer** Step 4)
+
+_\* If you are high enough GC rank and have enough seals the profile will buy these automatically if you don't have them, but it will stop the bot with an error otherwise._
 
 ## Required Settings and Warnings
 

@@ -83,7 +83,7 @@ Required: LLamaLibrary BotBase
         </If>
         <If Condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90) and not NqHasAtLeast(5274,35)">
             <RunCode Name="miniumWarning" />
-            <LLStopBot />
+            <BuyGCItem ItemId="5274" Count="35" />
         </If>
         <While condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;) and not NqHasAtLeast(&choraZoiComponent;,90)">
             <Log Message="Crafting for Customized &job;'s Components." />
@@ -175,7 +175,14 @@ Required: LLamaLibrary BotBase
 	    </CodeChunk>
         <CodeChunk Name="miniumWarning">
             <![CDATA[
-                Core.OverlayManager.AddToast(() => "You must manually collect 35 Minium before proceeding.", TimeSpan.FromMilliseconds(30000), System.Windows.Media.Color.FromRgb(208,52,44), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+                var gcRank = LlamaLibrary.Extensions.LocalPlayerExtensions.GCRank(Core.Me);
+                var gcCurr = LlamaLibrary.Extensions.LocalPlayerExtensions.GCSeals(Core.Me);
+
+                if (!(gcRank >= 9 && gcCurr >= 7000)) {
+                    Core.OverlayManager.AddToast(() => "You must manually collect 35 Minium before proceeding.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(208,52,44), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+
+                    TreeRoot.Stop();  
+                }
             ]]>
 	    </CodeChunk>
     </CodeChunks>
