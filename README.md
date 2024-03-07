@@ -14,7 +14,9 @@ RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Fi
 
 - Any Splendorous Tools you already have from any step **must** be in your inventory or armory chest so the profile can see you have them and skip over them or resume from the appropriate step. This **will** cause problems if you have them and they are not on your character!
 - Have another tool (i.e. Indagator's) on your character for each job you're gearing. This is because you need to be on the job with the Splendorous Tool in your inventory/armory to turn in quests. If you don't have any it _should_ go buy a cheap one but I haven't tested this.
-- Make sure your Lisbeth settings are set appropriately: set up a Home so you don't craft in the middle of a zone like a robot, and set up food/syrup (these speed up the process immensely for anything past step 3). Setting up masterpieces for white scrips is optional if for some reason you want to change them, but Lisbeth normally favors Giant Popoto Pancakes which are the fastest and easiest white scrip collectable.
+- Make sure your Lisbeth settings are set appropriately: set up a Home so you don't craft in the middle of a zone like a robot, and set up food/syrup (these speed up the process immensely for anything past step 3).
+- Setting up masterpieces for white scrips is optional if for some reason you want to change them, but Lisbeth normally favors Giant Popoto Pancakes which are the fastest and easiest white scrip collectable..
+- I recommend setting Lisbeth's suborder mode to "Quick-synth All." The Chora-Zoi and Brilliant steps will occasionally fail to max quality without HQ mats, but the profile is built to craft extras to account for average component yield. Normal synthing the suborders is _extremely_ time-consuming.
 - You should have _at least_ 50 or so inventory spaces available. The script should still run with at least 5 slots open, but you will be teleporting back and forth more and generally being inefficient, if not suspicious.
 
 ## How to Use
