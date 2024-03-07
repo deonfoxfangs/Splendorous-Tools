@@ -10,6 +10,12 @@ RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Fi
 - The latest version of [Lisbeth (paid)](https://lisbeth.io/downloads/EN/Lisbeth.zip)
 - The latest version of [Exbuddy](https://github.com/Entrax643/ExBuddy)
 
+## Items Needed
+
+Some of the crafts require items that cannot be obtained by Lisbeth. These items must be collected on your own or else the bot will hang when it reaches the corresponding step. Items known so far include:
+
+- 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/) (**Armorer** Step 4)
+
 ## Required Settings and Warnings
 
 - Any Splendorous Tools you already have from any step **must** be in your inventory or armory chest so the profile can see you have them and skip over them or resume from the appropriate step. This **will** cause problems if you have them and they are not on your character!
