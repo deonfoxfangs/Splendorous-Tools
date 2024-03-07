@@ -7,7 +7,7 @@ RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Fi
 **NOTE:** All of these dependencies are automatically downloaded by [UpdateBuddy](https://rebornbuddy.wiki/users/#installing-updatebuddy-and-other-add-ons) and this is the recommended way to obtain them.
 
 - The latest version of [LLamaLibrary](https://github.com/nt153133/LlamaLibrary)
-- The latest version of [Lisbeth] (paid) (https://lisbeth.io/downloads/EN/Lisbeth.zip)
+- The latest version of [Lisbeth (paid)](https://lisbeth.io/downloads/EN/Lisbeth.zip)
 - The latest version of [Exbuddy](https://github.com/Entrax643/ExBuddy)
 
 ## Required Settings and Warnings
