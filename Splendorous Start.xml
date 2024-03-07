@@ -29,6 +29,7 @@ Required: LLamaLibrary BotBase
 <Profile>
     <Name>Splendorous Tools</Name>
     <Order>
+        <LisbethCheck />
         <!-- Carpenter -->
         <If Condition="&crp; == 1">
             <If Condition="not HasItem(&crpTool;) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 89">
