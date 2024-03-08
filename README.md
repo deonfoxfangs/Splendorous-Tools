@@ -14,21 +14,21 @@ RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Fi
 
 Some of the crafts require items that cannot be obtained by Lisbeth or require large amounts of mob grinding which should generally be avoided when botting. See below for details.
 
-- 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/)\* (**Armorer** Step 4)
-- 120 Kumbhira Skin (**Leatherworker** Step 4)
 - 200 Almasty Fur (**Leatherworker**/**Weaver** Step 2, **Leatherworker** Step 7, **Weaver** Step 7)
-- 60 Apkallu Down (**Leatherworker** Step 5)
-- 240 Ophiotauros Hide (**Leatherworker** Step 5, **Weaver** Step 3)
-- 100 Petalouda Scales (**Alchemist** Step 2, **Alchemist** Step 7)
-- 160 Lunatender Blossom (**Alchemist** Step 3/4/6, **Weaver** Step 5)
-- 180 Vampire Vine Sap (**Alchemist** Step 4, **Weaver** Step 5)
-- 180 Hoptrap Leaf (**Alchemist** Step 4, **Weaver** Step 5)
-- 120 Saiga Hide (**Weaver** Step 5)
-- 150 Ovibos Milk (**Culinarian** Step 5)
-- 60 Mousse Flesh (**Alchemist** Step 6)
-- 60 Egg of Elpis (**Culinarian** step 6)
-- 60 Berkanan Sap (**Alchemist** Step 7)
 - 60 Amra (**Alcheist** Step 7)
+- 60 Apkallu Down (**Leatherworker** Step 5)
+- 60 Berkanan Sap (**Alchemist** Step 7)
+- 60 Egg of Elpis (**Culinarian** step 6)
+- 180 Hoptrap Leaf (**Alchemist** Step 4, **Weaver** Step 5)
+- 120 Kumbhira Skin (**Leatherworker** Step 4)
+- 160 Lunatender Blossom (**Alchemist** Step 3/4/6, **Weaver** Step 5)
+- 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/)\* (**Armorer** Step 4)
+- 60 Mousse Flesh (**Alchemist** Step 6)
+- 240 Ophiotauros Hide (**Leatherworker** Step 5, **Weaver** Step 3)
+- 150 Ovibos Milk (**Culinarian** Step 5)
+- 100 Petalouda Scales (**Alchemist** Step 2, **Alchemist** Step 7)
+- 120 Saiga Hide (**Weaver** Step 5)
+- 180 Vampire Vine Sap (**Alchemist** Step 4, **Weaver** Step 5)
 
 _\* If you are high enough GC rank and have enough seals the profile will buy these automatically if you don't have them, but it will stop the bot with an error otherwise._
 
