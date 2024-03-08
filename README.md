@@ -24,7 +24,7 @@ Some of the crafts require items that cannot be obtained by Lisbeth or require l
 - 160 Lunatender Blossom (**ALC** Step 3/4/6, **WVR** Step 5)
 - 35 [Minium](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/e75c79574e6/)\* (**ARM** Step 4)
 - 60 Mousse Flesh (**ALC** Step 6)
-- 240 Ophiotauros Hide (**LTW** Step 5, **WVR** Step 3)
+- 240 Ophiotauros Hide (**LTW** Step 5, **WVR** Step 4)
 - 150 Ovibos Milk (**CUL** Step 5)
 - 100 Petalouda Scales (**ALC** Step 2.7)
 - 120 Saiga Hide (**WVR** Step 5)
