@@ -8,7 +8,7 @@ Required: LLamaLibrary BotBase
 -->
 <!DOCTYPE Profile [
 	<!ENTITY minTool "38715">
-	<!ENTITY maxTool "38722">
+	<!ENTITY maxTool "38725">
 ]>
 <Profile>
 	<Name>A Dedicated Tool</Name>

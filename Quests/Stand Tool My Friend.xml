@@ -8,7 +8,7 @@ Required: LLamaLibrary BotBase
 -->
 <!DOCTYPE Profile [
 	<!ENTITY minTool "41180">
-	<!ENTITY maxTool "41187">
+	<!ENTITY maxTool "41190">
 ]>
 <Profile>
 	<Name>Stand Tool, My Friend</Name>

@@ -17,6 +17,8 @@ Required: LLamaLibrary BotBase
     <!ENTITY gsm "1">
     <!ENTITY ltw "1">
     <!ENTITY wvr "1">
+    <!ENTITY btn "1">
+    <!ENTITY min "1">
     <!ENTITY crpTool "41191">
     <!ENTITY bsmTool "41192">
     <!ENTITY armTool "41193">
@@ -25,6 +27,8 @@ Required: LLamaLibrary BotBase
     <!ENTITY wvrTool "41196">
     <!ENTITY alcTool "41197">
     <!ENTITY culTool "41198">
+    <!ENTITY minTool "41199">
+    <!ENTITY btnTool "41200">
 ]>
 <Profile>
     <Name>Splendorous Tools</Name>
@@ -102,6 +106,24 @@ Required: LLamaLibrary BotBase
                 <RunCode name="discardCulinarian" />
             </If>
         </If>
+        <!-- Miner -->
+        <If Condition="&min;== 1">
+            <If Condition="not HasItem(&minTool;) and Core.Me.Levels[ClassJobType.Miner] &gt; 89">
+                <LLoadProfile Path="Profiles/Splendorous MIN Tool.xml" />
+            </If>
+            <If Condition="&discardExcess; == 1 and HasItem(&minTool;)">
+                <RunCode name="discardMiner" />
+            </If>
+        </If>
+        <!-- Botanist -->
+        <If Condition="&btn;== 1">
+            <If Condition="not HasItem(&minTool;) and Core.Me.Levels[ClassJobType.Botanist] &gt; 89">
+                <LLoadProfile Path="Profiles/Splendorous BTN Tool.xml" />
+            </If>
+            <If Condition="&discardExcess; == 1 and HasItem(&btnTool;)">
+                <RunCode name="discardBotanist" />
+            </If>
+        </If>
         <!-- Final Quest -->
         <If Condition="not IsQuestCompleted(70341)">
             <If Condition="&crp; == 1">
@@ -134,6 +156,14 @@ Required: LLamaLibrary BotBase
             </If>
             <If Condition="&cul; == 1">
                 <ChangeClass Job="Culinarian" />
+                <LLoadProfile Path="Quests/Dearly Bekettled.xml" />
+            </If>
+            <If Condition="&min; == 1">
+                <ChangeClass Job="Miner" />
+                <LLoadProfile Path="Quests/Dearly Bekettled.xml" />
+            </If>
+            <If Condition="&btn; == 1">
+                <ChangeClass Job="Botanist" />
                 <LLoadProfile Path="Quests/Dearly Bekettled.xml" />
             </If>
         </If>
@@ -320,6 +350,64 @@ Required: LLamaLibrary BotBase
                                                                                              || cs.EnglishName.StartsWith("Brilliant")
                                                                                              || cs.EnglishName.StartsWith("Inspirational")
                                                                                              || cs.EnglishName.StartsWith("Nightforged"))).ToList();
+
+                    if (components.Any())
+                    {
+                        foreach (var slot in components)
+                        {
+                            Logging.Write("Discarding Excess {0}", slot.Name);
+                            LlamaLibrary.Extensions.BagSlotExtensions.Discard(slot);
+                            await Coroutine.Sleep(1000);
+                        }
+                    }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="discardMiner">
+            <![CDATA[
+                    await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
+
+                    List<BagSlot> components = InventoryManager.FilledSlots.Where(cs => (cs.EnglishName.EndsWith("Miner's Component") &&
+                                                                                         (cs.EnglishName.StartsWith("Splendorous")
+                                                                                         || cs.EnglishName.StartsWith("Adaptive")
+                                                                                         || cs.EnglishName.StartsWith("Customized")
+                                                                                         || cs.EnglishName.StartsWith("Brilliant")
+                                                                                         || cs.EnglishName.StartsWith("Inspirational")
+                                                                                         || cs.EnglishName.StartsWith("Nightforged")))
+                                                                                        || cs.EnglishName.StartsWith("Splendorous Water")
+                                                                                        || cs.EnglishName.StartsWith("Adaptive Fire")
+                                                                                        || cs.EnglishName.StartsWith("Custom Ice")
+                                                                                        || cs.EnglishName.StartsWith("Brilliant Lightning")
+                                                                                        || cs.EnglishName.StartsWith("Inspirational Wind")
+                                                                                        || cs.EnglishName.StartsWith("Nightforged Ice")).ToList();
+
+                    if (components.Any())
+                    {
+                        foreach (var slot in components)
+                        {
+                            Logging.Write("Discarding Excess {0}", slot.Name);
+                            LlamaLibrary.Extensions.BagSlotExtensions.Discard(slot);
+                            await Coroutine.Sleep(1000);
+                        }
+                    }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="discardBotanist">
+            <![CDATA[
+                    await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
+
+                    List<BagSlot> components = InventoryManager.FilledSlots.Where(cs => (cs.EnglishName.EndsWith("Botanist's Component") &&
+                                                                                         (cs.EnglishName.StartsWith("Splendorous")
+                                                                                         || cs.EnglishName.StartsWith("Adaptive")
+                                                                                         || cs.EnglishName.StartsWith("Customized")
+                                                                                         || cs.EnglishName.StartsWith("Brilliant")
+                                                                                         || cs.EnglishName.StartsWith("Inspirational")
+                                                                                         || cs.EnglishName.StartsWith("Nightforged")))
+                                                                                        || cs.EnglishName.StartsWith("Splendorous Earth")
+                                                                                        || cs.EnglishName.StartsWith("Adaptive Lightning")
+                                                                                        || cs.EnglishName.StartsWith("Custom Wind")
+                                                                                        || cs.EnglishName.StartsWith("Brilliant Earth")
+                                                                                        || cs.EnglishName.StartsWith("Inspirational Fire")
+                                                                                        || cs.EnglishName.StartsWith("Nightforged Water")).ToList();
 
                     if (components.Any())
                     {
