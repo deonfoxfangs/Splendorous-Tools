@@ -60,12 +60,12 @@ Required: LLamaLibrary BotBase
         <!-- Vrandtic Tool (Step 6)-->
         <!--- Check La Vie Mowen Quest Completion -->
         <If Condition="not IsQuestCompleted(70306) and HasItem(&brilliantTool;)">
-            <ChangeClass Job="&job;" />
+            <ChangeClass Job="&jobChange;" />
             <LLoadProfile Path="../Quests/La Vie Mowen.xml" />
         </If>
         <!-- Check Dance Like Mowen Is Watching Quest Completion -->
         <If Condition="not IsQuestCompleted(70338) and HasItem(&brilliantTool;)">
-            <ChangeClass Job="&job;" />
+            <ChangeClass Job="&jobChange;" />
             <LLoadProfile Path="../Quests/Dance Like Mowen Is Watching.xml" />
         </If>
         <If condition="not HasItem(&vrandticTool;) and HasItem(&brilliantTool;)">
@@ -104,7 +104,7 @@ Required: LLamaLibrary BotBase
         <!-- Chora-Zoi's Crystalline Tool (Step 4) -->
         <!-- Check The Joy of Zoi Quest Completion -->
         <If Condition="not IsQuestCompleted(70303) and HasItem(&crystallineTool;)">
-            <ChangeClass Job="&job;" />
+            <ChangeClass Job="&jobChange;" />
             <LLoadProfile Path="../Quests/The Joy of Zoi.xml" />
         </If>
         <If condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;)">
@@ -158,14 +158,14 @@ Required: LLamaLibrary BotBase
             </If>
         </If>
         <!-- Splendorous Tool (Step 1) -->
-        <If Condition="not IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
-            <Log Message="Doing initial quest on &job;." />
+        <If Condition="not IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&jobChange;] &gt; 89">
+            <Log Message="Doing initial quest on &jobChange;." />
             <RunCode name="questToast" />
             <ChangeClass Job="&jobChange;" />
             <AutoInventoryEquip />
             <LLoadProfile Path="../Quests/An Original Improvement.xml" />
         </If>
-        <If Condition="IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
+        <If Condition="IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&jobChange;] &gt; 89">
             <Log Message="Buying &jobChange; tool with scrips." />
             <RunCode name="splendorousToast" />
             <Lisbeth Json="[{'Group':1,'Item':&splendorousTool;,'Amount':1,'Enabled':true,'Type':'Exchange' }]" />
@@ -218,10 +218,10 @@ Required: LLamaLibrary BotBase
                 await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
 
                 List<BagSlot> components = InventoryManager.FilledSlots.Where(cs => cs.EnglishName.StartsWith("Connoisseur's") &&
-                                                                                        (cs.EnglishName.EndsWith("Soiled Femur")
-                                                                                            || cs.EnglishName.EndsWith("Aurum Regis Ore")
-                                                                                            || cs.EnglishName.EndsWith("Asphaltum")
-                                                                                            || cs.EnglishName.EndsWith("Raw Onyx"))).ToList();
+                                                                                        (cs.EnglishName.EndsWith("Miracle Apple")
+                                                                                            || cs.EnglishName.EndsWith("Cloves")
+                                                                                            || cs.EnglishName.EndsWith("Gianthive Chip")
+                                                                                            || cs.EnglishName.EndsWith("Glimshroom"))).ToList();
 
                 if (components.Any())
                 {
