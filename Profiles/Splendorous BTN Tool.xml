@@ -23,17 +23,17 @@ Required: LLamaLibrary BotBase
     <!ENTITY crystallineMaterial "38797">
     <!ENTITY crystallineCrystal "38798">
     <!ENTITY choraZoiComponent "39818">
-    <!ENTITY choraZoiMaterial "39806">
-    <!ENTITY choraZoiCrystal "39807">
+    <!ENTITY choraZoiMaterial "39807">
+    <!ENTITY choraZoiCrystal "39808">
     <!ENTITY brilliantComponent "39822">
-    <!ENTITY brilliantMaterial "39812">
-    <!ENTITY brilliantCrystal "39813">
+    <!ENTITY brilliantMaterial "39813">
+    <!ENTITY brilliantCrystal "39814">
     <!ENTITY vrandticComponent "41295">
-    <!ENTITY vrandticMaterial "41287">
-    <!ENTITY vrandticCrystal "41288">
+    <!ENTITY vrandticMaterial "41288">
+    <!ENTITY vrandticCrystal "41289">
     <!ENTITY lodestarComponent "41297">
-    <!ENTITY lodestarMaterial "41291">
-    <!ENTITY lodestarCrystal "41292">
+    <!ENTITY lodestarMaterial "41292">
+    <!ENTITY lodestarCrystal "41293">
 ]>
 <Profile>
     <Name>Splendorous BTN Tool</Name>

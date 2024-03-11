@@ -117,7 +117,7 @@ Required: LLamaLibrary BotBase
         </If>
         <!-- Botanist -->
         <If Condition="&btn;== 1">
-            <If Condition="not HasItem(&minTool;) and Core.Me.Levels[ClassJobType.Botanist] &gt; 89">
+            <If Condition="not HasItem(&btnTool;) and Core.Me.Levels[ClassJobType.Botanist] &gt; 89">
                 <LLoadProfile Path="Profiles/Splendorous BTN Tool.xml" />
             </If>
             <If Condition="&discardExcess; == 1 and HasItem(&btnTool;)">
