@@ -16,12 +16,12 @@ Required: LLamaLibrary BotBase
     <!ENTITY brilliantTool "39752">
     <!ENTITY vrandticTool "41189">
     <!ENTITY lodestarTool "41200">
-    <!ENTITY augmentedComponent "38802">
-    <!ENTITY augmentedMaterial "38791">
-    <!ENTITY augmentedCrystal "38792">
-    <!ENTITY crystallineComponent "38806">
-    <!ENTITY crystallineMaterial "38797">
-    <!ENTITY crystallineCrystal "38798">
+    <!ENTITY augmentedComponent "38800">
+    <!ENTITY augmentedMaterial "38788">
+    <!ENTITY augmentedCrystal "38789">
+    <!ENTITY crystallineComponent "38804">
+    <!ENTITY crystallineMaterial "38794">
+    <!ENTITY crystallineCrystal "38795">
     <!ENTITY choraZoiComponent "39818">
     <!ENTITY choraZoiMaterial "39807">
     <!ENTITY choraZoiCrystal "39808">

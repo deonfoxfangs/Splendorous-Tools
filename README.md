@@ -1,6 +1,6 @@
 # Splendorous-Tools
 
-RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH jobs in Final Fantasy XIV..
+RebornBuddy Order Bot profile to obtain Splendorous Tools for all DoH/DoL jobs in Final Fantasy XIV..
 
 ## Dependencies
 
@@ -41,6 +41,7 @@ Retainer ventures are a very efficient way to get mob drop items essentially for
 - Set up a Home in Lisbeth so you don't craft in the middle of a zone like a robot, and set up Smart Food/Medicine.
 - For Lisbeth's suborder mode, you can choose between Quick Synth All and Quick Synth Non-Direct. Choosing All means you'll likely need multiple orders to complete steps 4 and 5, but choosing Non-Direct means you'll spend extra time HQ'ing submats. Up to you which you prefer, I think All is faster but I haven't tested.
 - Have _at least_ 50 or so free inventory slots. The script should still run with at least 6, but you will be teleporting back and forth more and generally being inefficient, if not suspicious.
+- For fishing specifically, change the in-game item settings to put all new items in the Armory Chest, make sure equipment optimization is enabled in Lisbeth, and make sure to only have a low-level rod other than the Splendorous tool. Lisbeth won't always equip the Splendorous tool automatically unlike the other jobs and could get stuck otherwise.
 
 ## How to Use
 

@@ -19,6 +19,7 @@ Required: LLamaLibrary BotBase
     <!ENTITY wvr "1">
     <!ENTITY btn "1">
     <!ENTITY min "1">
+    <!ENTITY fsh "1">
     <!ENTITY crpTool "41191">
     <!ENTITY bsmTool "41192">
     <!ENTITY armTool "41193">
@@ -29,6 +30,7 @@ Required: LLamaLibrary BotBase
     <!ENTITY culTool "41198">
     <!ENTITY minTool "41199">
     <!ENTITY btnTool "41200">
+    <!ENTITY fshTool "41201">
 ]>
 <Profile>
     <Name>Splendorous Tools</Name>
@@ -122,6 +124,14 @@ Required: LLamaLibrary BotBase
             </If>
             <If Condition="&discardExcess; == 1 and HasItem(&btnTool;)">
                 <RunCode name="discardBotanist" />
+            </If>
+        </If>
+        <If Condition="&fsh;== 1">
+            <If Condition="not HasItem(&fshTool;) and Core.Me.Levels[ClassJobType.Fisher] &gt; 89">
+                <LLoadProfile Path="Profiles/Splendorous FSH Tool.xml" />
+            </If>
+            <If Condition="&discardExcess; == 1 and HasItem(&fshTool;)">
+                <RunCode name="discardFisher" />
             </If>
         </If>
         <!-- Final Quest -->
@@ -408,6 +418,33 @@ Required: LLamaLibrary BotBase
                                                                                         || cs.EnglishName.StartsWith("Brilliant Earth")
                                                                                         || cs.EnglishName.StartsWith("Inspirational Fire")
                                                                                         || cs.EnglishName.StartsWith("Nightforged Water")).ToList();
+
+                    if (components.Any())
+                    {
+                        foreach (var slot in components)
+                        {
+                            Logging.Write("Discarding Excess {0}", slot.Name);
+                            LlamaLibrary.Extensions.BagSlotExtensions.Discard(slot);
+                            await Coroutine.Sleep(1000);
+                        }
+                    }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="discardFisher">
+            <![CDATA[
+                    await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
+
+                    List<BagSlot> components = InventoryManager.FilledSlots.Where(cs => (cs.EnglishName.EndsWith("Fishing Rod Component")
+                                                                                         || cs.EnglishName.EndsWith("Fishing Reel Component")
+                                                                                         || cs.EnglishName.StartsWith("Shadow Crab")
+                                                                                         || cs.EnglishName.StartsWith("Skulleater")
+                                                                                         || cs.EnglishName.StartsWith("Yeti Crab")
+                                                                                         || cs.EnglishName.StartsWith("Ancient Shrimp")
+                                                                                         || cs.EnglishName.StartsWith("Clawbow")
+                                                                                         || cs.EnglishName.StartsWith("Yellow Pipira")
+                                                                                         || cs.EnglishName.StartsWith("Golding")
+                                                                                         || cs.EnglishName.StartsWith("Grey Skipper")
+                                                                                         || cs.EnglishName.StartsWith("Cerulean Loach"))).ToList();
 
                     if (components.Any())
                     {

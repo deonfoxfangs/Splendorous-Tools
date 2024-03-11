@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Deon
+Required: LLamaLibrary BotBase
+		  Lisbeth BotBase
+		  Exbuddy Plugin
+          ALL currently obtained Splendorous weapons in inventory or Armory.
+-->
+<!DOCTYPE Profile [
+    <!ENTITY job "Fisher">
+    <!ENTITY splendorousTool "38725">
+    <!ENTITY augmentedTool "38736">
+    <!ENTITY crystallineTool "38747">
+    <!ENTITY choraZoiTool "39742">
+    <!ENTITY brilliantTool "39753">
+    <!ENTITY vrandticTool "41190">
+    <!ENTITY lodestarTool "41201">
+    <!ENTITY augmentedRod "38802">
+    <!ENTITY augmentedReel "38803">
+    <!ENTITY augmentedRodFish "38792">
+    <!ENTITY augmentedReelFish "38793">
+    <!ENTITY crystallineRod "38806">
+    <!ENTITY crystallineReel "38807">
+    <!ENTITY crystallineRodFish "38798">
+    <!ENTITY crystallineReelFish "38799">
+    <!ENTITY choraZoiRod "39819">
+    <!ENTITY choraZoiReel "39820">
+    <!ENTITY choraZoiRodFish "39809">
+    <!ENTITY choraZoiReelFish "39810">
+    <!ENTITY brilliantRod "39823">
+    <!ENTITY brilliantReel "39824">
+    <!ENTITY brilliantRodFish "39815">
+    <!ENTITY brilliantReelFish "39816">
+    <!ENTITY vrandticComponent "41303">
+    <!ENTITY vrandticRodFish "41298">
+    <!ENTITY vrandticReelFish "41299">
+    <!ENTITY lodestarComponent "41304">
+    <!ENTITY lodestarRodFish "41300">
+    <!ENTITY lodestarReelFish "41301">
+]>
+<Profile>
+    <Name>Splendorous FSH Tool</Name>
+    <Order>
+        <RunCode name="reduceMaterials" />
+        <TurnInSplendorous />
+        <!--- Lodestar Tool (Step 7) -->
+        <If condition="not HasItem(&lodestarTool;) and HasItem(&vrandticTool;)">
+            <Log Message="Fishing for Lodestar &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&lodestarComponent;,170)">
+                <RunCode name="lodestarToast" />
+                <RunCode name="lodestarExpedition" /> <!-- Running fishing expedition as these fish don't appear to be working in Lisbeth -->
+                <!--<SplendorousOrder ItemToCraft="&lodestarReelFish;" Total="170" RewardItemId="&lodestarComponent;" Job="&job;" />-->
+                <RunCode name="reduceMaterials" />
+            </While>
+            <If Condition="NqHasAtLeast(&lodestarComponent;,170)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/Stand Tool My Friend.xml" />
+            </If>
+        </If>
+        <!-- Vrandtic Tool (Step 6)-->
+        <!--- Check La Vie Mowen Quest Completion -->
+        <If Condition="not IsQuestCompleted(70306) and HasItem(&brilliantTool;)">
+            <ChangeClass Job="&job;" />
+            <LLoadProfile Path="../Quests/La Vie Mowen.xml" />
+        </If>
+        <!-- Check Dance Like Mowen Is Watching Quest Completion -->
+        <If Condition="not IsQuestCompleted(70338) and HasItem(&brilliantTool;)">
+            <ChangeClass Job="&job;" />
+            <LLoadProfile Path="../Quests/Dance Like Mowen Is Watching.xml" />
+        </If>
+        <If condition="not HasItem(&vrandticTool;) and HasItem(&brilliantTool;)">
+            <Log Message="Fishing for Vrandtic &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&vrandticComponent;,170)">
+                <RunCode name="vrandticToast" />
+                <RunCode name="vrandticExpedition" /> <!-- Running fishing expedition as these fish don't appear to be working in Lisbeth -->
+                <!--<SplendorousOrder ItemToCraft="&vrandticRodFish;" Total="170" RewardItemId="&vrandticComponent;" Job="&job;" Fish="true" />-->
+                <RunCode name="reduceMaterials" />
+            </While>
+            <If Condition="NqHasAtLeast(&vrandticComponent;,170)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/A Tool for the Ages.xml" />
+            </If>
+        </If>
+        <!-- Brilliant Tool (Step 5) -->
+        <If condition="not HasItem(&brilliantTool;) and HasItem(&choraZoiTool;)">
+            <Log Message="Fishing for Brilliant &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&brilliantRod;,80)">
+                <RunCode name="brilliantToast" />
+                <SplendorousOrder ItemToCraft="&brilliantRodFish;" Total="80" RewardItemId="&brilliantRod;" Job="&job;" Fish="true" />
+                <RunCode name="reduceMaterials" />
+            </While>
+            <While Condition="not NqHasAtLeast(&brilliantReel;,80)">
+                <RunCode name="brilliantToast" />
+                <SplendorousOrder ItemToCraft="&brilliantReelFish;" Total="80" RewardItemId="&brilliantReel;" Job="&job;" Fish="true" />
+                <RunCode name="reduceMaterials" />
+            </While>
+            <If Condition="NqHasAtLeast(&brilliantRod;,80) and NqHasAtLeast(&brilliantReel;,80)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/A Tool Without Compare.xml" />
+            </If>
+        </If>
+        <!-- Chora-Zoi's Crystalline Tool (Step 4) -->
+        <!-- Check The Joy of Zoi Quest Completion -->
+        <If Condition="not IsQuestCompleted(70303) and HasItem(&crystallineTool;)">
+            <ChangeClass Job="&job;" />
+            <LLoadProfile Path="../Quests/The Joy of Zoi.xml" />
+        </If>
+        <If condition="not HasItem(&choraZoiTool;) and HasItem(&crystallineTool;)">
+            <Log Message="Fishing for Chora-Zoi &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&choraZoiRod;,80)">
+                <RunCode name="choraToast" />
+                <SplendorousOrder ItemToCraft="&choraZoiRodFish;" Total="80" RewardItemId="&choraZoiRod;" Job="&job;" Fish="true" />
+                <RunCode name="reduceMaterials" />
+            </While>
+            <While Condition="not NqHasAtLeast(&choraZoiReel;,80)">
+                <RunCode name="choraToast" />
+                <SplendorousOrder ItemToCraft="&choraZoiReelFish;" Total="80" RewardItemId="&choraZoiReel;" Job="&job;" Fish="true" />
+                <RunCode name="reduceMaterials" />
+            </While>
+            <If Condition="NqHasAtLeast(&choraZoiRod;,80) and NqHasAtLeast(&choraZoiReel;,80)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/A Tool of Her Own.xml" />
+            </If>
+        </If>
+        <!-- Crystalline Tool (Step 3) -->
+        <If Condition="not HasItem(&crystallineTool;) and HasItem(&augmentedTool;)">
+            <Log Message="Fishing for Crystalline &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&crystallineRod;,80)">
+                <RunCode name="crystallineToast" />
+                <SplendorousOrder ItemToCraft="&crystallineRodFish;" Total="80" RewardItemId="&crystallineRod;" Job="&job;" Fish="true" />
+                <TurnInSplendorous />
+            </While>
+            <While Condition="not NqHasAtLeast(&crystallineReel;,80)">
+                <RunCode name="crystallineToast" />
+                <SplendorousOrder ItemToCraft="&crystallineReelFish;" Total="80" RewardItemId="&crystallineReel;" Job="&job;" Fish="true" />
+                <TurnInSplendorous />
+            </While>
+            <If Condition="NqHasAtLeast(&crystallineRod;,80) and NqHasAtLeast(&crystallineReel;,80)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/An Adaptive Tool.xml" />
+            </If>
+        </If>
+        <!-- Augmented Splendorous Tool (Step 2) -->
+        <If Condition="not HasItem(&augmentedTool;) and HasItem(&splendorousTool;)">
+            <Log Message="Fishing for Splendorous &job;'s Tool" />
+            <While Condition="not NqHasAtLeast(&augmentedRod;,60)">
+                <RunCode name="augmentedToast" />
+                <SplendorousOrder ItemToCraft="&augmentedRodFish;" Total="60" RewardItemId="&augmentedRod;" Job="&job;" Fish="true" />
+                <TurnInSplendorous />
+            </While>
+            <While Condition="not NqHasAtLeast(&augmentedReel;,60)">
+                <RunCode name="augmentedToast" />
+                <SplendorousOrder ItemToCraft="&augmentedReelFish;" Total="60" RewardItemId="&augmentedReel;" Job="&job;" Fish="true" />
+                <TurnInSplendorous />
+            </While>
+            <If Condition="NqHasAtLeast(&augmentedRod;,60) and NqHasAtLeast(&augmentedReel;,60)">
+                <ChangeClass Job="&job;" />
+                <LLoadProfile Path="../Quests/A Dedicated Tool.xml" />
+            </If>
+        </If>
+        <!-- Splendorous Tool (Step 1) -->
+        <If Condition="not IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
+            <Log Message="Doing initial quest on &job;." />
+            <RunCode name="questToast" />
+            <ChangeClass Job="&job;" />
+            <AutoInventoryEquip />
+            <LLoadProfile Path="../Quests/An Original Improvement.xml" />
+        </If>
+        <If Condition="IsQuestCompleted(70266) and not HasItem(&splendorousTool;) and Core.Me.Levels[ClassJobType.&job;] &gt; 89">
+            <Log Message="Buying &job; tool with scrips." />
+            <RunCode name="splendorousToast" />
+            <Lisbeth Json="[{'Group':1,'Item':&splendorousTool;,'Amount':1,'Enabled':true,'Type':'Exchange' }]" />
+        </If>
+        <LLoadProfile Path="../Splendorous Start.xml" />
+    </Order>
+    <CodeChunks>
+        <CodeChunk Name="questToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Completing Quest 'An Original Improvement'", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(91,146,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="splendorousToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Exchanging for Splendorous Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(91,146,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="augmentedToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Augmented Splendorous Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(91,146,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="crystallineToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Crystalline Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="choraToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Chora-Zoi's Crystalline Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="brilliantToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Brilliant Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="vrandticToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Vrandtic Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="lodestarToast">
+            <![CDATA[
+                Core.OverlayManager.AddToast(() => "Fishing for Lodestar Tool", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(179,140,255), System.Windows.Media.Color.FromRgb(0,0,0), new System.Windows.Media.FontFamily("Microsoft Sans Serif"));
+            ]]>
+	    </CodeChunk>
+        <CodeChunk Name="vrandticExpedition">
+            <![CDATA[ 
+                var alreadyHas = (int)Math.Ceiling((decimal)(170 - ConditionParser.ItemCount((uint)41303)));
+                var amountToOrder = Math.Min((int)alreadyHas, (int)(InventoryManager.FreeSlots - 5));
+
+                await LlamaLibrary.Helpers.Lisbeth.ExecuteOrders("[{'Group':1,'Amount':" + amountToOrder + ",'Enabled':true,'Type':'FishingExpedition','Collectable':true,'FishingExpeditionSpotId':245,'FishingExpeditionBaitId':38808,'HooksetOption':'Alternate','FishingExpeditionMode':'PatienceMooch','UseChum':true}]");
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="lodestarExpedition">
+            <![CDATA[ 
+                var alreadyHas = (int)Math.Ceiling((decimal)(170 - ConditionParser.ItemCount((uint)41304)));
+                var amountToOrder = Math.Min((int)alreadyHas, (int)(InventoryManager.FreeSlots - 5));
+
+                await LlamaLibrary.Helpers.Lisbeth.ExecuteOrders("[{'Group':1,'Amount':" + amountToOrder + ",'Enabled':true,'Type':'FishingExpedition','Collectable':true,'FishingExpeditionSpotId':224,'FishingExpeditionBaitId':38808,'UseChum':true}]");
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="reduceMaterials">
+            <![CDATA[
+                await LlamaLibrary.Helpers.GeneralFunctions.StopBusy();
+
+                List<BagSlot> components = InventoryManager.FilledSlots.Where(cs => cs.EnglishName.StartsWith("Gold Dustfish") ||
+                                                                                    cs.EnglishName.StartsWith("Forgiven Melancholy") ||
+                                                                                    cs.EnglishName.StartsWith("Oil Slick") ||
+                                                                                    cs.EnglishName.StartsWith("Gonzalo's Grace") ||
+                                                                                    cs.EnglishName.StartsWith("Deadwood Shadow") ||
+                                                                                    cs.EnglishName.StartsWith("Ronkan Bullion") ||
+                                                                                    cs.EnglishName.StartsWith("Little Bounty") ||
+                                                                                    cs.EnglishName.StartsWith("Saint Fathric's Face")).ToList();
+
+                if (components.Any())
+                {
+                    foreach (var slot in components)
+                    {
+                        Logging.Write("Reducing {0}", slot.Name);
+                        LlamaLibrary.Extensions.BagSlotExtensions.Reduce(slot);
+                        await Coroutine.Wait(20000, () => Core.Memory.Read<uint>(LlamaLibrary.Memory.Offsets.Conditions + LlamaLibrary.Memory.Offsets.DesynthLock) != 0);
+                        await Coroutine.Wait(20000, () => Core.Memory.Read<uint>(LlamaLibrary.Memory.Offsets.Conditions + LlamaLibrary.Memory.Offsets.DesynthLock) == 0);                        
+                    }
+
+                    await Coroutine.Sleep(1000);
+
+                    var windowByName = RaptureAtkUnitManager.GetWindowByName("PurifyResult");
+                    if (windowByName != null)
+                    {
+                        windowByName.SendAction(1, 3uL, 4294967295uL);
+                    }                    
+                }
+            ]]>
+        </CodeChunk>
+    </CodeChunks>
+</Profile>
