@@ -225,7 +225,7 @@ Required: LLamaLibrary BotBase
         <CodeChunk Name="lodestarExpedition">
             <![CDATA[ 
                 var alreadyHas = (int)Math.Ceiling((decimal)(170 - ConditionParser.ItemCount((uint)41304)));
-                var amountToOrder = Math.Min((int)alreadyHas, (int)(InventoryManager.FreeSlots - 5));
+                var amountToOrder = Math.Min((int)Math.Ceiling((decimal)alreadyHas/1.25), (int)(InventoryManager.FreeSlots - 5));
 
                 await LlamaLibrary.Helpers.Lisbeth.ExecuteOrders("[{'Group':1,'Amount':" + amountToOrder + ",'Enabled':true,'Type':'FishingExpedition','Collectable':true,'FishingExpeditionSpotId':224,'FishingExpeditionBaitId':38808,'UseChum':true}]");
             ]]>
