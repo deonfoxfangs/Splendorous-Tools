@@ -126,6 +126,7 @@ Required: LLamaLibrary BotBase
                 <RunCode name="discardBotanist" />
             </If>
         </If>
+        <!-- Fisher -->
         <If Condition="&fsh;== 1">
             <If Condition="not HasItem(&fshTool;) and Core.Me.Levels[ClassJobType.Fisher] &gt; 89">
                 <LLoadProfile Path="Profiles/Splendorous FSH Tool.xml" />
